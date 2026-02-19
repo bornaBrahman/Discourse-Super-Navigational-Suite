@@ -1,0 +1,8 @@
+en:
+  site_settings:
+    super_navigation_suite_enabled: "Enable Discourse Super Navigation Suite"
+    super_navigation_suite_cache_minutes: "Minutes to cache menu and panel API responses"
+    super_navigation_suite_max_panel_items: "Maximum number of topics returned by a single panel query"
+    super_navigation_suite_config_rate_limit_per_minute: "Per-minute request limit for navigation config endpoint"
+    super_navigation_suite_panel_rate_limit_per_minute: "Per-minute request limit for navigation panel endpoint"
+    super_navigation_suite_json: "JSON configuration for menus, sidebars, and discovery blocks"

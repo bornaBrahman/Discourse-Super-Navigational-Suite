@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "menus": [
+    {
+      "id": "primary",
+      "label": "Primary",
+      "placement": "top_nav",
+      "layout": "mega_grid",
+      "open_mode": "hover",
+      "hover_delay_ms": 160,
+      "items": [
+        {
+          "id": "home",
+          "title": "Home",
+          "type": "link",
+          "url": "/"
+        },
+        {
+          "id": "latest",
+          "title": "Latest",
+          "type": "link",
+          "url": "/latest"
+        },
+        {
+          "id": "categories",
+          "title": "Categories",
+          "type": "section_heading",
+          "panel": {
+            "source_type": "category_latest",
+            "category_slug": "general",
+            "limit": 8,
+            "show_excerpt": true
+          },
+          "children": [
+            {
+              "id": "all-categories",
+              "title": "All Categories",
+              "type": "link",
+              "url": "/categories"
+            },
+            {
+              "id": "support",
+              "title": "Support",
+              "type": "category",
+              "category_slug": "support"
+            },
+            {
+              "id": "guides",
+              "title": "Guides",
+              "type": "category",
+              "category_slug": "guides"
+            }
+          ]
+        },
+        {
+          "id": "trending",
+          "title": "Trending",
+          "type": "link",
+          "url": "/top",
+          "panel": {
+            "source_type": "category_top",
+            "category_slug": "general",
+            "time_range": "weekly",
+            "limit": 6
+          }
+        },
+        {
+          "id": "staff",
+          "title": "Staff",
+          "type": "link",
+          "url": "/g/staff",
+          "visibility": {
+            "groups": ["staff"]
+          }
+        },
+        {
+          "id": "docs",
+          "title": "Documentation",
+          "type": "external_link",
+          "url": "https://meta.discourse.org"
+        }
+      ]
+    }
+  ],
+  "sidebars": [
+    {
+      "id": "default-sidebar",
+      "label": "Default Sidebar",
+      "layout": "stacked",
+      "widgets": [
+        {
+          "id": "latest-widget",
+          "type": "latest_topics",
+          "title": "Latest Discussions",
+          "limit": 8
+        },
+        {
+          "id": "tag-widget",
+          "type": "tag_cloud",
+          "title": "Popular Tags",
+          "limit": 20
+        }
+      ]
+    }
+  ],
+  "discovery_blocks": [
+    {
+      "id": "hero",
+      "type": "hero",
+      "title": "Welcome to the Community",
+      "subtitle": "Discover new topics and experts."
+    },
+    {
+      "id": "featured-grid",
+      "type": "featured_topics_grid",
+      "title": "Featured Topics",
+      "limit": 6,
+      "sorting": "top",
+      "time_range": "monthly"
+    }
+  ]
+}

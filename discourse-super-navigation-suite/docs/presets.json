@@ -1,0 +1,59 @@
+{
+  "reddit_style": {
+    "version": 1,
+    "menus": [
+      {
+        "id": "reddit-primary",
+        "placement": "top_nav",
+        "layout": "mega_grid",
+        "open_mode": "hover",
+        "hover_delay_ms": 100,
+        "items": [
+          { "id": "hot", "title": "Hot", "type": "link", "url": "/latest" },
+          { "id": "new", "title": "New", "type": "link", "url": "/new" },
+          { "id": "top", "title": "Top", "type": "link", "url": "/top" }
+        ]
+      }
+    ],
+    "sidebars": [],
+    "discovery_blocks": []
+  },
+  "netflix_style": {
+    "version": 1,
+    "menus": [
+      {
+        "id": "netflix-primary",
+        "placement": "top_nav",
+        "layout": "mega_grid",
+        "open_mode": "hover",
+        "hover_delay_ms": 220,
+        "items": [
+          { "id": "home", "title": "Home", "type": "link", "url": "/" },
+          { "id": "trending", "title": "Trending", "type": "link", "url": "/top" },
+          { "id": "new-releases", "title": "New", "type": "link", "url": "/latest" }
+        ]
+      }
+    ],
+    "sidebars": [],
+    "discovery_blocks": []
+  },
+  "knowledge_base": {
+    "version": 1,
+    "menus": [
+      {
+        "id": "kb-primary",
+        "placement": "top_nav",
+        "layout": "dropdown",
+        "open_mode": "click",
+        "hover_delay_ms": 0,
+        "items": [
+          { "id": "docs", "title": "Docs Home", "type": "link", "url": "/categories" },
+          { "id": "guides", "title": "Guides", "type": "tag", "tag": "guide" },
+          { "id": "release-notes", "title": "Release Notes", "type": "tag", "tag": "release-notes" }
+        ]
+      }
+    ],
+    "sidebars": [],
+    "discovery_blocks": []
+  }
+}

@@ -1,0 +1,88 @@
+plugins:
+  super_navigation_suite_enabled:
+    default: true
+    client: true
+  super_navigation_suite_cache_minutes:
+    default: 10
+    min: 1
+    max: 180
+  super_navigation_suite_max_panel_items:
+    default: 12
+    min: 1
+    max: 40
+  super_navigation_suite_config_rate_limit_per_minute:
+    default: 120
+    min: 30
+    max: 2000
+  super_navigation_suite_panel_rate_limit_per_minute:
+    default: 240
+    min: 30
+    max: 5000
+  super_navigation_suite_json:
+    type: string
+    default: |
+      {
+        "version": 1,
+        "menus": [
+          {
+            "id": "primary",
+            "label": "Primary Navigation",
+            "placement": "top_nav",
+            "layout": "mega_grid",
+            "open_mode": "hover",
+            "hover_delay_ms": 160,
+            "items": [
+              {
+                "id": "latest",
+                "title": "Latest",
+                "type": "link",
+                "url": "/latest"
+              },
+              {
+                "id": "categories",
+                "title": "Categories",
+                "type": "section_heading",
+                "panel": {
+                  "source_type": "category_latest",
+                  "category_slug": "general",
+                  "limit": 6
+                },
+                "children": [
+                  {
+                    "id": "all-categories",
+                    "title": "All Categories",
+                    "type": "link",
+                    "url": "/categories"
+                  },
+                  {
+                    "id": "general",
+                    "title": "General",
+                    "type": "category",
+                    "category_slug": "general"
+                  }
+                ]
+              },
+              {
+                "id": "top",
+                "title": "Top",
+                "type": "link",
+                "url": "/top",
+                "panel": {
+                  "source_type": "category_top",
+                  "category_slug": "general",
+                  "time_range": "monthly",
+                  "limit": 5
+                }
+              },
+              {
+                "id": "help",
+                "title": "Help",
+                "type": "external_link",
+                "url": "https://meta.discourse.org"
+              }
+            ]
+          }
+        ],
+        "sidebars": [],
+        "discovery_blocks": []
+      }
