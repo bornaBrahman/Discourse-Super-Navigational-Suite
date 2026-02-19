@@ -68,18 +68,20 @@ module ::DiscourseSuperNavigationSuite
     def ensure_config_rate_limit!
       perform_rate_limit!(
         "sns-config",
-        SiteSetting.super_navigation_suite_config_rate_limit_per_minute,
+        safe_site_setting(:super_navigation_suite_config_rate_limit_per_minute, 120),
       )
     end
 
     def ensure_panel_rate_limit!
       perform_rate_limit!(
         "sns-panel",
-        SiteSetting.super_navigation_suite_panel_rate_limit_per_minute,
+        safe_site_setting(:super_navigation_suite_panel_rate_limit_per_minute, 240),
       )
     end
 
     def perform_rate_limit!(prefix, max_per_minute)
+      return if max_per_minute.to_i <= 0
+
       identifier = current_user ? "u#{current_user.id}" : "ip#{request.remote_ip}"
       RateLimiter.new(
         current_user,
@@ -91,6 +93,14 @@ module ::DiscourseSuperNavigationSuite
       raise
     rescue StandardError => e
       Rails.logger.warn("[SNS] rate limit check skipped: #{e.class} #{e.message}")
+    end
+
+    def safe_site_setting(name, fallback)
+      return fallback unless SiteSetting.respond_to?(name)
+
+      SiteSetting.public_send(name).to_i
+    rescue StandardError
+      fallback
     end
   end
 end
