@@ -11,11 +11,25 @@ module ::DiscourseSuperNavigationSuite
     def config
       expires_in SiteSetting.super_navigation_suite_cache_minutes.minutes, public: false
       render_json_dump(ConfigStore.visible_config(current_user))
+    rescue StandardError => e
+      Rails.logger.warn("[SNS] config endpoint failed: #{e.class} #{e.message}")
+      render_json_dump(
+        "version" => 1,
+        "menus" => [],
+        "sidebars" => [],
+        "discovery_blocks" => [],
+      )
     end
 
     def panel
       expires_in SiteSetting.super_navigation_suite_cache_minutes.minutes, public: false
       render_json_dump(TopicQuery.fetch(current_user, panel_params.to_h.symbolize_keys))
+    rescue StandardError => e
+      Rails.logger.warn("[SNS] panel endpoint failed: #{e.class} #{e.message}")
+      render_json_dump(
+        source: panel_params.to_h,
+        topics: [],
+      )
     end
 
     def presets
@@ -73,6 +87,10 @@ module ::DiscourseSuperNavigationSuite
         max_per_minute,
         1.minute,
       ).performed!
+    rescue RateLimiter::LimitExceeded
+      raise
+    rescue StandardError => e
+      Rails.logger.warn("[SNS] rate limit check skipped: #{e.class} #{e.message}")
     end
   end
 end
