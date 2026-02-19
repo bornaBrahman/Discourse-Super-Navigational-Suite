@@ -20,26 +20,25 @@ Backend/API layer for a modular navigation, sidebar, and discovery system on Dis
 ## File Structure
 
 ```text
-discourse-super-navigation-suite/
-  plugin.rb
-  config/
-    initializers/01_super_navigation_suite.rb
-    routes.rb
-    settings.yml
-    locales/server.en.yml
-  app/
-    controllers/discourse_super_navigation_suite/navigation_controller.rb
-    models/discourse_super_navigation_suite/navigation_profile.rb
-    serializers/discourse_super_navigation_suite/navigation_profile_serializer.rb
-  lib/discourse_super_navigation_suite/
-    engine.rb
-    config_store.rb
-    topic_query.rb
-    visibility_resolver.rb
-  db/migrate/20260218000100_create_super_navigation_profiles.rb
-  docs/
-    example-config.json
-    presets.json
+plugin.rb
+config/
+  initializers/01_super_navigation_suite.rb
+  routes.rb
+  settings.yml
+  locales/server.en.yml
+app/
+  controllers/discourse_super_navigation_suite/navigation_controller.rb
+  models/discourse_super_navigation_suite/navigation_profile.rb
+  serializers/discourse_super_navigation_suite/navigation_profile_serializer.rb
+lib/discourse_super_navigation_suite/
+  engine.rb
+  config_store.rb
+  topic_query.rb
+  visibility_resolver.rb
+db/migrate/20260218000100_create_super_navigation_profiles.rb
+docs/
+  example-config.json
+  presets.json
 ```
 
 ## API Endpoints
@@ -57,8 +56,8 @@ Public endpoints are rate-limited by:
 
 ## Installation (self-hosted Discourse)
 
-1. Copy this folder into your Discourse container host at:
-   `containers/app/plugins/discourse-super-navigation-suite`
+1. Add plugin to `containers/app.yml`:
+   `- sudo -E -u discourse git clone https://github.com/bornaBrahman/Discourse-Super-Navigational-Suite.git`
 2. Rebuild Discourse:
    `cd /var/discourse`
    `./launcher rebuild app`
